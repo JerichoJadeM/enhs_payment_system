@@ -1,0 +1,68 @@
+Web Based Miscellaneous Payment System for Public High Schools
+
+Current Version:
+
+	- Version 1.3.5 (Alpha)
+
+CHANGE LOG:
+
+Version 1.3.5, 2020-12-13
+--------------------------------------------------------------------------------------
+- 	Fixed: Contact image on Profile page not responsive on mobile devices
+-	Added : Resetting of SMS API (itextmo.com), curlless method for SMS Notification feature
+-	Updated: Renewal of expired SMS API trial version (itextmo.com)
+
+--------------------------------------------------------------------------------------
+
+
+Version 1.3.2, 2020-12-11
+--------------------------------------------------------------------------------------
+
+-	Added: Integration of Bootstrap 5 (beta) on Profile Page.
+-	Added: Profile Page for developers
+
+--------------------------------------------------------------------------------------
+
+Version 1.2.1, 2020-12-09
+--------------------------------------------------------------------------------------
+
+-	Fixed: Receipt generating entire amount paid not in a single transaction.
+-	Fixed: Section not displaying for adviser account
+-	Fixed: Students on adviser account not displaying on data table
+-	Fixed: Student Master List displaying all students not filtered with adviser account
+
+--------------------------------------------------------------------------------------
+Version 1.1.7, 2020-12-08
+--------------------------------------------------------------------------------------
+
+-	Added: Remaining Balance on Payment History Details Section
+-	Edited: Invalid Feedback if user selects promi
+
+--------------------------------------------------------------------------------------
+Version 1.1.5, 2020-12-07
+--------------------------------------------------------------------------------------
+
+-	Changed: School Address from Cano-An to Tacbuyan
+-	Fixed: Images not responsive
+-	Added: Thumbnail border on profile pictures
+
+--------------------------------------------------------------------------------------
+Version 1.1.2, 2020-10-09
+--------------------------------------------------------------------------------------
+
+-	Added: Inquiries feature
+-	Added: Mailing function to support inquiries
+
+--------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------
+Version 1.0.0, 2020-10-05
+--------------------------------------------------------------------------------------
+
+-	Alpha Version initial release
+
+--------------------------------------------------------------------------------------
+
+
+
+
