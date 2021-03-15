@@ -79,7 +79,7 @@
         <a href="#" class="list-group-item list-group-item-action main-color-bg text-light" data-toggle="collapse" data-target="#demo1"><img src="../assets/icons/people-fill.svg" width="20px"> Users <img src="../assets/icons/plus.svg" class="float-right" width="20px"></a>
         <div id="demo1" class="collapse">
           <a href="../users.php" class="list-group-item list-group-item-action main-color-bg text-light pl-5"><img src="../assets/icons/list.svg" width="20px"> All Users</a>
-          <a href="../users.php" class="list-group-item list-group-item-action main-color-bg text-light pl-5"><img src="../assets/icons/person-plus.svg" width="20px"> Add User</a>
+          <a href="#" type="button" data-toggle="modal" data-target="#createAdmin" class="list-group-item list-group-item-action main-color-bg text-light pl-5"><img src="../assets/icons/person-plus.svg" width="20px"> Add User</a>
         </div>
         <a href="#" class="list-group-item list-group-item-action main-color-bg text-light" data-toggle="collapse" data-target="#demo2"><img src="../assets/icons/person-badge.svg" width="20px"> Students <img src="../assets/icons/plus.svg" class="float-right" width="20px"></a>
         <div id="demo2" class="collapse">
@@ -392,6 +392,217 @@
         </div>
       </div>
     </div>
+    <!--Create User-->
+    <div class="modal fade" id="createAdmin" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header main-color-bg">
+            <h5 class="modal-title" id="createAdmin">New User Creation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card-body">
+            <form action="php_actions/process.php" class="needs-validation" method="POST" novalidate>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" class="form-control" name="username" maxlength="10" placeholder="Enter Username" required>
+                                    <div class="invalid-feedback">
+                                      Choose valid username.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" name="password" placeholder="Enter password" required>
+                                    <div class="invalid-feedback">
+                                      Choose valid password.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <hr class="col-md-11"><!--Guhit-->
+                              <h5 class="lead text-center text-info mb-1"><strong>Personal Information</strong></h5>
+                              <div class="row">
+                                <div class="col-md-5">
+                                  <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" name="ufname" placeholder="Enter First Name" required>
+                                    <div class="invalid-feedback">
+                                      Please enter first name.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-5">
+                                  <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" name="ulname" placeholder="Enter Last Name" required>
+                                    <div class="invalid-feedback">
+                                      Please enter last name.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-2">
+                                  <div class="form-group">
+                                    <label>M.I</label>
+                                    <input type="text" class="form-control" maxlength="1" name="umname" placeholder="M.I" required>
+                                    <div class="invalid-feedback">
+                                      *Requried.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <script>
+                                  //on selection
+                                    function random1(){
+                                      var a=document.getElementById('input').value;
+                                          if(a === '7'){
+                                              var array=['Aguinaldo','Bonifacio', 'Lapu-Lapu', 'Rizal'];
+                                          }
+                                          else if(a === '8'){
+                                            var array=['Amber','Diamond','Emerald', 'Pearl'];
+                                          }
+                                          else if(a === '9'){
+                                            var array=['Eagle','Hawk','Ostrich', 'Parrot'];
+                                          }
+                                          else if(a === '10'){
+                                            var array=['Aristotle','Einstein','Newton', 'Tesla'];
+                                          }
+                                          else if(a === 'Not Applicable'){
+                                            var array=['Not Applicable'];
+                                          }
+                                          else{
+                                              var array=['Please Select'];
+                                          }
+                                           var string="";
+                                            for(i=0;i<array.length;i++){
+                                              string=string+"<option>"+array[i]+"</option>";
+                                            }
+                                            string="<select name='usection'>"+string+"</select>";
+                                          document.getElementById('output').innerHTML=string;
+                                        }
+                                      </script>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>User Type</label>
+                                    <select class="form-control" name="usertype" required>
+                                      <option>--Select User type--</option>
+                                      <option>Accountant</option>
+                                      <option>Adviser</option>
+                                    </select>
+                                    <div class="valid-feedback">
+                                      Please select user type.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group">
+                                    <label>Grade</label>
+                                    <select class="form-control" name="ugrade" id="input" onchange="random1()" required>
+                                        <option>Select Grade</option>
+                                        <option>Not Applicable</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                       <option>10</option>
+                                    </select>
+                                      
+                                    <div class="invalid-feedback">
+                                      Select option that apply.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-5">
+                                  <div class="form-group">
+                                  <label>Section</label>
+                                  <select class="form-control" name="usection" id="output" required>
+                                    <option>Select Section</option>
+                                    </select>
+                                  </div>
+                                  <div class="valid-feedback">
+                                      Select Option that apply.
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-5">
+                                  <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="text" class="form-control" maxlength="11" name="uphone" placeholder="Enter your phone number" required>
+                                    <div class="invalid-feedback">
+                                      Phone number required.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-7">
+                                  <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" name="uemail" placeholder="Enter email address" required>
+                                    <div class="invalid-feedback">
+                                      Please enter email address.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" name="uaddress" placeholder="Enter Address" required>
+                                    <div class="invalid-feedback">
+                                      Please enter address.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" name="ucity" placeholder="City" required>
+                                    <div class="invalid-feedback">
+                                      Enter City.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>Country</label>
+                                    <input type="text" class="form-control" name="ucountry" placeholder="Country" required>
+                                    <div class="invalid-feedback">
+                                      Please enter country.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label>Postal Code</label>
+                                    <input type="number" class="form-control" name="upostal" placeholder="ZIP Code" required>
+                                    <div class="invalid-feedback">
+                                      *Requred.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row float-right">
+                                <div class="col-md-12">
+                                  <button class="btn btn-warning mt-3 mb-2" data-dismiss="modal">Cancel</button>
+                                  <button class="btn btn-info mt-3 mb-2" type="submit" name="addUser">Add New User</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Add Student -->
     <div class="modal fade" id="addedit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -436,7 +647,7 @@
                                       <script>
                                       //on selection
                                         function random(){
-                                          var a=document.getElementById('input').value;
+                                          var a=document.getElementById('input1').value;
                                             if(a === '7'){
                                                 var array=['Aguinaldo','Bonifacio', 'Lapu-Lapu', 'Rizal'];
                                             }
@@ -458,13 +669,13 @@
                                               string=string+"<option>"+array[i]+"</option>";
                                             }
                                             string="<select name='lol'>"+string+"</select>";
-                                          document.getElementById('output').innerHTML=string;
+                                          document.getElementById('output1').innerHTML=string;
                                         }
                                       </script>
                                       <div class="row">
                                             <div class="col-md-3 form-group">
                                                 <label class="lead"><strong>Grade</strong></label>
-                                                <select class="form-control" name="grade" id="input" onchange="random()" required>
+                                                <select class="form-control" name="grade" id="input1" onchange="random()" required>
                                                   <option>Select Grade</option>
                                                   <option>7</option>
                                                   <option>8</option>
@@ -478,7 +689,7 @@
 
                                             <div class="col-md-4 form-group">
                                                 <label class="lead"><strong>Section</strong></label>
-                                                <select class="form-control" name="section" id="output" required>
+                                                <select class="form-control" name="section" id="output1" required>
                                                   <option>Select Section</option>
                                                 </select>
                                                 <div class="invalid-feedback">

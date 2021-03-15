@@ -282,7 +282,7 @@
                               </div>
                               <script>
                                   //on selection
-                                    function random(){
+                                    function random1(){
                                       var a=document.getElementById('input').value;
                                           if(a === '7'){
                                               var array=['Aguinaldo','Bonifacio', 'Lapu-Lapu', 'Rizal'];
@@ -327,7 +327,7 @@
                                 <div class="col-md-3">
                                   <div class="form-group">
                                     <label>Grade</label>
-                                    <select class="form-control" name="ugrade" id="input" onchange="random()" required>
+                                    <select class="form-control" name="ugrade" id="input" onchange="random1()" required>
                                         <option>Select Grade</option>
                                         <option>Not Applicable</option>
                                         <option>7</option>
@@ -471,7 +471,7 @@
                                       <script>
                                       //on selection
                                         function random(){
-                                          var a=document.getElementById('input').value;
+                                          var a=document.getElementById('input1').value;
                                             if(a === '7'){
                                                 var array=['Aguinaldo','Bonifacio', 'Lapu-Lapu', 'Rizal'];
                                             }
@@ -493,13 +493,13 @@
                                               string=string+"<option>"+array[i]+"</option>";
                                             }
                                             string="<select name='lol'>"+string+"</select>";
-                                          document.getElementById('output').innerHTML=string;
+                                          document.getElementById('output1').innerHTML=string;
                                         }
                                       </script>
                                       <div class="row">
                                             <div class="col-md-3 form-group">
                                                 <label class="lead"><strong>Grade</strong></label>
-                                                <select class="form-control" name="grade" id="input" onchange="random()" required>
+                                                <select class="form-control" name="grade" id="input1" onchange="random()" required>
                                                   <option>Select Grade</option>
                                                   <option>7</option>
                                                   <option>8</option>
@@ -513,7 +513,7 @@
 
                                             <div class="col-md-4 form-group">
                                                 <label class="lead"><strong>Section</strong></label>
-                                                <select class="form-control" name="section" id="output" required>
+                                                <select class="form-control" name="section" id="output1" required>
                                                   <option>Select Section</option>
                                                 </select>
                                                 <div class="invalid-feedback">

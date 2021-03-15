@@ -197,7 +197,7 @@
             $card_result = $card->fetch_assoc();
             $allAct = $card_result['total_act'];
           ?>
-            <div class="card bg-info">
+            <div class="card bg-info"><a class="card-block stretched-link text-decoration-none text-dark" href="users.php">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Users</strong></h5>
                 <h6 class="card-text text-center">
@@ -209,9 +209,9 @@
                   <h1><?php echo $allUsers?></h1>
                   </div>
                 </div>
-              </div>
+              </div></a>
             </div>
-            <div class="card bg-warning">
+            <div class="card bg-warning"><a class="card-block stretched-link text-decoration-none text-dark" href="students.php">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Students</strong></h5>
               <div class="row">
@@ -222,9 +222,9 @@
                   <h1><?php echo $allStudents?></h1>
                   </div>
                 </div>
-              </div>
+              </div></a>
             </div>
-            <div class="card bg-success">
+            <div class="card bg-success"><a class="card-block stretched-link text-decoration-none text-dark" href="inquiries.php">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Inquiries</strong></h5>
                 <div class="row">
@@ -235,9 +235,9 @@
                   <h1><?php echo $allMsg?></h1>
                   </div>
                 </div>
-              </div>
+              </div></a>
             </div>
-            <div class="card bg-danger">
+            <div class="card bg-danger"><a class="card-block stretched-link text-decoration-none text-dark" href="activity.php">
               <div class="card-body text-center">
                 <h5 class="card-title"><strong>Daily Activities</strong></h5>
                 <div class="row">
@@ -248,7 +248,7 @@
                   <h1><?php echo $allAct?></h1>
                   </div>
                 </div>
-              </div>
+              </div></a>
             </div>  
           </div>
             <div class="row mt-3">
@@ -497,7 +497,7 @@
                               </div>
                               <script>
                                   //on selection
-                                    function random(){
+                                    function random1(){
                                       var a=document.getElementById('input').value;
                                           if(a === '7'){
                                               var array=['Aguinaldo','Bonifacio', 'Lapu-Lapu', 'Rizal'];
@@ -542,7 +542,7 @@
                                 <div class="col-md-3">
                                   <div class="form-group">
                                     <label>Grade</label>
-                                    <select class="form-control" name="ugrade" id="input" onchange="random()" required>
+                                    <select class="form-control" name="ugrade" id="input" onchange="random1()" required>
                                         <option>Select Grade</option>
                                         <option>Not Applicable</option>
                                         <option>7</option>
@@ -686,7 +686,7 @@
                                       <script>
                                       //on selection
                                         function random(){
-                                          var a=document.getElementById('input').value;
+                                          var a=document.getElementById('input1').value;
                                             if(a === '7'){
                                                 var array=['Aguinaldo','Bonifacio', 'Lapu-Lapu', 'Rizal'];
                                             }
@@ -708,13 +708,13 @@
                                               string=string+"<option>"+array[i]+"</option>";
                                             }
                                             string="<select name='lol'>"+string+"</select>";
-                                          document.getElementById('output').innerHTML=string;
+                                          document.getElementById('output1').innerHTML=string;
                                         }
                                       </script>
                                       <div class="row">
                                             <div class="col-md-3 form-group">
                                                 <label class="lead"><strong>Grade</strong></label>
-                                                <select class="form-control" name="grade" id="input" onchange="random()" required>
+                                                <select class="form-control" name="grade" id="input1" onchange="random()" required>
                                                   <option>Select Grade</option>
                                                   <option>7</option>
                                                   <option>8</option>
@@ -728,7 +728,7 @@
 
                                             <div class="col-md-4 form-group">
                                                 <label class="lead"><strong>Section</strong></label>
-                                                <select class="form-control" name="section" id="output" required>
+                                                <select class="form-control" name="section" id="output1" required>
                                                   <option>Select Section</option>
                                                 </select>
                                                 <div class="invalid-feedback">
