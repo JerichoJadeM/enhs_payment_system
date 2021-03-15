@@ -165,7 +165,7 @@
     <section id="main">
         <div class="container">
         <div class="row mb-3">
-          <div class="container">
+          <!-- <div class="container">
             <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Generate Report
@@ -177,7 +177,7 @@
                 <a class="dropdown-item" href="#"><strong>Annually</strong></a>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
           <div class="card-deck"><!--Card Decks-->
           <?php
