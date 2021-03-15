@@ -80,7 +80,7 @@
           //##########################################################################
             $textMsg = "Php " . $amount . ".00 total Misc fee paid by " . $fullname . ". Remaining Balance is Php " . $RemainingBal . ".00";
 
-            $msgResult = itexmo($phone,$textMsg,"TR-JOYLY988634_MXEV4", "@7q]f[rid)");
+            $msgResult = itexmo($phone,$textMsg,"TR-CHONA140935_CG9CS", "b)lq&%tyr]");
             if ($msgResult == ""){
               echo "iTexMo: No response from server!!!
               Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.	
@@ -340,7 +340,7 @@
           //##########################################################################
             $textMsg = "Php " . $amount . ".00 total Misc fee paid by " . $fullname . ". Remaining Balance is Php " . $RemainingBal . ".00";
 
-            $msgResult = itexmo($phone,$textMsg,"TR-JOYLY988634_MXEV4", "@7q]f[rid)");
+            $msgResult = itexmo($phone,$textMsg,"TR-CHONA140935_CG9CS", "b)lq&%tyr]");
             if ($msgResult == ""){
             echo "iTexMo: No response from server!!!
             Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.	
