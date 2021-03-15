@@ -47,10 +47,10 @@
 
 <body>
     <div class="container mt-4">
-        <div class="card mb-3 shadow mx-auto" style="max-width: 90%;">
+        <div class="card mb-3 shadow mx-auto" style="max-width: 90%; max-height:100%;">
             <div class="row no-gutters">
               <div class="col-md-5 d-sm-none d-md-block d-none d-sm-block">
-                <img src="admin/assets/img/hs.jpg" class="card-img" height="100%" alt="...">
+                <img src="admin/assets/img/hs.jpg" class="card-img" height="64%" alt="display picture">
               </div>
               <div class="col-md-7 mt-4">
                 <div class="card-body mx-auto">
