@@ -178,7 +178,7 @@
     <section id="main">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-10"  style="max-width: 100%;">
                 <!--Edit Student Information ||-->
                     <div class="card">
                         <div class="card-header mb-0">
@@ -234,21 +234,21 @@
                                                     </div>
                                                     <div class="card-body">
                                                       <div class="form-group mb-0">
-                                                        <input type="text" name="subject" class="form-control mb-1 mt-0" placeholder="Type your subject here..." required>
+                                                        <input type="text" name="subject" class="form-control mb-1 mt-0" placeholder="Enter your subject" required>
                                                           <div class="invalid-feedback mb-1">
                                                              Your message must have a subject.
                                                           </div>
                                                       </div>
                                                         <div class="form-group mb-0">
-                                                            <textarea name="editor" class="form-control mb-0" required></textarea>
+                                                            <textarea name="editor" class="form-control mb-0" rows="10" placeholder="Type your message here..." required></textarea>
                                                               <div class="invalid-feedback mb-1">
                                                                 You must type your response.
                                                               </div>
-                                                            <script>
+                                                            <!-- <script>
                                                                 CKEDITOR.replace( 'editor', {
                                                                     uiColor: '#9AB8F3'
                                                                 });
-                                                            </script>
+                                                            </script> -->
                                                         </div>
                                                     </div>
                                                     <div class="row mr-0 mt-0">
@@ -452,7 +452,6 @@
 <script src="../assets/js/bootstrap.bundle.js"></script>
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
   <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
