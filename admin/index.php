@@ -165,8 +165,9 @@
     <section id="main">
         <div class="container">
         <div class="row mb-3">
-          <!-- <div class="container">
-            <div class="dropdown">
+          <div class="container">
+          <a href="php_actions/student-list.php" type="button" class="btn btn-outline-dark text-primary"><strong>Generate Report</strong></a>
+            <!-- <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Generate Report
               </button>
@@ -176,8 +177,8 @@
                 <a class="dropdown-item" href="#"><strong>Quarterly</strong></a>
                 <a class="dropdown-item" href="#"><strong>Annually</strong></a>
               </div>
-            </div>
-          </div> -->
+            </div> -->
+          </div>
         </div>
           <div class="card-deck"><!--Card Decks-->
           <?php
