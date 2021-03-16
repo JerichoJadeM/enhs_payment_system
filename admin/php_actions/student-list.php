@@ -48,7 +48,7 @@ function Header()
     // Title
     $this->Cell(30,5,'Estancia National High School',0,1,'C');
     $this->SetFont('Arial','',12);
-    $this->Cell(190,5,'Brgy. Cano-An, Estancia, Iloilo',0,1,'C');
+    $this->Cell(190,5,'Brgy. Tacbuyan, Estancia, Iloilo',0,1,'C');
     $this->SetFont('Arial','',12);
     $this->Cell(190,5,'Contact #: 0997-865-8119',0,1,'C');
     // Line break

@@ -166,7 +166,7 @@
         <div class="container">
         <div class="row mb-3">
           <div class="container">
-          <a href="php_actions/student-list.php" type="button" class="btn btn-outline-dark text-primary"><strong>Generate Report</strong></a>
+          <a href="php_actions/reports.php" target="_blank" type="button" class="btn btn-outline-dark text-primary"><strong>Generate Report</strong></a>
             <!-- <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Generate Report
