@@ -53,14 +53,14 @@ $logoXPos = 50;
 $logoYPos = 50;
 $logoWidth = 100;
 $columnLabels = array( "Q1", "Q2", "Q3", "Q4" );
-$rowLabels = array( "Promi", "Partial", "Full Paid", "Not Paid" );
+$rowLabels = array( "Promi", "Partial", "Full Paid");
 $chartXPos = 20;
 $chartYPos = 250;
 $chartWidth = 160;
 $chartHeight = 80;
 $chartXLabel = "Category";
 $chartYLabel = "# of Students";
-$chartYStep = 5;
+$chartYStep = 2;
 
 $chartColours = array(
                   array( 255, 100, 100 ),
@@ -123,15 +123,16 @@ $chartColours = array(
   $qrow_stud = $tstudent->fetch_assoc();
   $stud_data = $qrow_stud['totalstud'];
 
-  $unpaid_qrtr1 = $conn->query("SELECT COUNT(LRN) as paid, amount  FROM payment WHERE amount > 1") or die($conn->error());
-  $qrow_unpaid1 = $unpaid_qrtr1->fetch_assoc();
-  $unpaid_data1 = $qrow_unpaid1['paid'];
+  $unpaid1 = ($promi_data1 + $partial_data1 + $f_data1)/3 *100;
+  $unpaid2 = ($promi_data2 + $partial_data2 + $f_data2)/3 *100;
+  $unpaid3 = ($promi_data3 + $partial_data3 + $f_data3)/3 *100;
+  $unpaid4 = ($promi_data4 + $partial_data4 + $f_data4)/3 *100;
 
 $data = array(
           array( $promi_data1, $promi_data2, $promi_data3, $promi_data4 ),
           array( $partial_data1, $partial_data2, $partial_data3, $partial_data4 ),
           array( $f_data1, $f_data2, $f_data3, $f_data4 ),
-          array( $unpaid_data1, 1, 1, 1 ),
+          //array( $unpaid1, $unpaid2, $unpaid3, $unpaid4),
         );
 
         //AYUSIN ANG SA UNPAID PER QUARTER AT YUNG YEAR NG REPORT
@@ -218,7 +219,7 @@ $pdf->Ln(6);
 $pdf->SetFont('Times','B',12);
 $pdf->cell(45,6, "Total Number Enrolled: ", 0,0, 'L');
 $pdf->SetFont('Times','',12);
-$pdf->cell(10,6, number_format($allStudents), 0,1, 'L'); // <--- Dynamic Data Here
+$pdf->cell(10,6, $allStudents, 0,1, 'L'); // <--- Dynamic Data Here
 
 $pdf->SetFont( 'Arial', '', 20 );
 $pdf->Write( 19, "Student Miscellaneous Summary" );
