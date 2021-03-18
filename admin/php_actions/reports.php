@@ -346,6 +346,270 @@ foreach ( $data as $dataRow ) {
   $bar++;
 }
 
+///////////////////////////////////////////////
+/// Create new page for User activities
+
+$columnLabels1 = array( "Q1", "Q2", "Q3", "Q4" );
+$rowLabels1 = array( "System Admin", "Accountant", "Advisers", "Inquiries");
+$chartXPos1 = 20;
+$chartYPos1 = 250;
+$chartWidth1 = 160;
+$chartHeight1 = 80;
+$chartXLabel1 = "Users";
+$chartYLabel1 = "# of Activities";
+$chartYStep1 = 5;
+
+$chartColours1 = array(
+                  array( 255, 0, 127 ),
+                  array( 255, 0, 255 ),
+                  array( 127, 0, 255 ),
+                  array( 0, 0, 255 ),
+                );
+
+  $SA_q1 = $conn->query("SELECT COUNT(id) as SA1 FROM activities WHERE user_type='System Administrator' AND QUARTER(activity_date)=1") or die($conn->error());
+  $SArow_q1 = $SA_q1->fetch_assoc();
+  $dataSA1 = $SArow_q1['SA1'];
+
+  $SA_q2 = $conn->query("SELECT COUNT(id) as SA2 FROM activities WHERE user_type='System Administrator' AND QUARTER(activity_date)=2") or die($conn->error());
+  $SArow_q2 = $SA_q2->fetch_assoc();
+  $dataSA2 = $SArow_q2['SA2'];
+
+  $SA_q3 = $conn->query("SELECT COUNT(id) as SA3 FROM activities WHERE user_type='System Administrator' AND QUARTER(activity_date)=3") or die($conn->error());
+  $SArow_q3 = $SA_q3->fetch_assoc();
+  $dataSA3 = $SArow_q3['SA3'];
+
+  $SA_q4 = $conn->query("SELECT COUNT(id) as SA4 FROM activities WHERE user_type='System Administrator' AND QUARTER(activity_date)=4") or die($conn->error());
+  $SArow_q4 = $SA_q4->fetch_assoc();
+  $dataSA4 = $SArow_q4['SA4'];
+
+  $Acc_q1 = $conn->query("SELECT COUNT(id) as acc1 FROM activities WHERE user_type='Accountant' AND QUARTER(activity_date)=1") or die($conn->error());
+  $accRow_q1 = $Acc_q1->fetch_assoc();
+  $dataAcc1 = $accRow_q1['acc1'];
+
+  $Acc_q2 = $conn->query("SELECT COUNT(id) as acc2 FROM activities WHERE user_type='Accountant' AND QUARTER(activity_date)=2") or die($conn->error());
+  $accRow_q2 = $Acc_q2->fetch_assoc();
+  $dataAcc2 = $accRow_q2['acc2'];
+
+  $Acc_q3 = $conn->query("SELECT COUNT(id) as acc3 FROM activities WHERE user_type='Accountant' AND QUARTER(activity_date)=3") or die($conn->error());
+  $accRow_q3 = $Acc_q3->fetch_assoc();
+  $dataAcc3 = $accRow_q3['acc3'];
+
+  $Acc_q4 = $conn->query("SELECT COUNT(id) as acc4 FROM activities WHERE user_type='Accountant' AND QUARTER(activity_date)=4") or die($conn->error());
+  $accRow_q4 = $Acc_q4->fetch_assoc();
+  $dataAcc4 = $accRow_q4['acc4'];
+
+  $adv_q1 = $conn->query("SELECT COUNT(id) as adv1 FROM activities WHERE user_type='Adviser' AND QUARTER(activity_date)=1") or die($conn->error());
+  $advRow_q1 = $adv_q1->fetch_assoc();
+  $dataAdv1 = $advRow_q1['adv1'];
+
+  $adv_q2 = $conn->query("SELECT COUNT(id) as adv2 FROM activities WHERE user_type='Adviser' AND QUARTER(activity_date)=2") or die($conn->error());
+  $advRow_q2 = $adv_q2->fetch_assoc();
+  $dataAdv2 = $advRow_q2['adv2'];
+
+  $adv_q3 = $conn->query("SELECT COUNT(id) as adv3 FROM activities WHERE user_type='Adviser' AND QUARTER(activity_date)=3") or die($conn->error());
+  $advRow_q3 = $adv_q3->fetch_assoc();
+  $dataAdv3 = $advRow_q3['adv3'];
+
+  $adv_q4 = $conn->query("SELECT COUNT(id) as adv4 FROM activities WHERE user_type='Adviser' AND QUARTER(activity_date)=4") or die($conn->error());
+  $advRow_q4 = $adv_q4->fetch_assoc();
+  $dataAdv4 = $advRow_q4['adv4'];
+
+  $inq1 = $conn->query("SELECT COUNT(id) as inquire1 FROM messages WHERE QUARTER(dateRecieved)=1") or die($conn->error());
+  $inqRow_q1 = $inq1->fetch_assoc();
+  $dataInq1 = $inqRow_q1['inquire1'];
+
+  $inq2 = $conn->query("SELECT COUNT(id) as inquire2 FROM messages WHERE QUARTER(dateRecieved)=2") or die($conn->error());
+  $inqRow_q2 = $inq2->fetch_assoc();
+  $dataInq2 = $inqRow_q2['inquire2'];
+
+  $inq3 = $conn->query("SELECT COUNT(id) as inquire3 FROM messages WHERE QUARTER(dateRecieved)=3") or die($conn->error());
+  $inqRow_q3 = $inq3->fetch_assoc();
+  $dataInq3 = $inqRow_q3['inquire3'];
+
+  $inq4 = $conn->query("SELECT COUNT(id) as inquire4 FROM messages WHERE QUARTER(dateRecieved)=4") or die($conn->error());
+  $inqRow_q4 = $inq4->fetch_assoc();
+  $dataInq4 = $inqRow_q4['inquire4'];
+
+$data1 = array(
+          array( $dataSA1, $dataSA2, $dataSA3, $dataSA4 ),
+          array( $dataAcc1, $dataAcc2, $dataAcc3, $dataAcc4 ),
+          array( $dataAdv1, $dataAdv2, $dataAdv3, $dataAdv4 ),
+          array( $dataInq1, $dataInq2, $dataInq3, $dataInq4),
+          );
+
+/**
+  Create the page header, main heading, and intro text
+**/
+
+// Start of Report Header
+$pdf->AddPage();
+$pdf->SetTextColor( $headerColour[0], $headerColour[1], $headerColour[2] );
+$pdf->SetFont( 'Arial', '', 17 );
+//$pdf->Cell( 0, 15, $reportName, 0, 0, 'C' );
+$pdf->Image('../libraries/fpdf182/tutorial/logo.png',30,8,20);
+    // Arial bold 15
+$pdf->SetFont('Arial','B',15);
+    // Move to the right
+$pdf->Cell(80);
+    // Title
+$pdf->Cell(30,5,'Estancia National High School',0,1,'C');
+$pdf->SetFont('Arial','',12);
+$pdf->Cell(190,5,'Brgy. Tacbuyan, Estancia, Iloilo',0,1,'C');
+$pdf->SetFont('Arial','',12);
+$pdf->Cell(190,5,'Contact #: 0997-865-8119',0,1,'C');
+    // Line break
+$pdf->Ln(15);
+//This is the end of report header
+
+$pdf->SetTextColor( $textColour[0], $textColour[1], $textColour[2] );
+
+// QUERY FOR TOTALS OF STUDENTS
+
+    $card = $conn->query("SELECT count(id) as total_activities FROM activities WHERE YEAR(CURDATE())") or die($conn->error());
+    $card_result = $card->fetch_assoc();
+    $allAct = $card_result['total_activities'];
+
+    $acc = $conn->query("SELECT count(id) as inquire FROM messages WHERE YEAR(CURDATE())") or die($conn->error());
+    $row = $acc->fetch_assoc();
+    $allMessages = $row['inquire'];
+
+//Another line for number of students
+$pdf->SetFont('Times','B',12);
+$pdf->cell(50,6, "Total Number of Activities: ", 0,0, 'L');
+$pdf->SetFont('Times','',12);
+$pdf->cell(10,6, number_format($allAct), 0,0, 'L'); // <--- Dynamic Data Here
+$pdf->Ln(6);
+$pdf->SetFont('Times','B',12);
+$pdf->cell(50,6, "Total Number of Inquiries: ", 0,0, 'L');
+$pdf->SetFont('Times','',12);
+$pdf->cell(10,6, number_format($allMessages), 0,0, 'L'); // <--- Dynamic Data Here
+$pdf->Ln(6);
+
+$pdf->SetFont( 'Arial', '', 20 );
+$pdf->Write( 19, "Summary of User Activities" );
+$pdf->Ln(5);
+
+/**
+  Create the table for payments
+**/
+
+$pdf->SetDrawColor( $tableBorderColour[0], $tableBorderColour[1], $tableBorderColour[2] );
+$pdf->Ln( 15 );
+
+// Create the table header row
+$pdf->SetFont( 'Arial', 'B', 15 );
+
+// "PRODUCT" cell
+$pdf->SetTextColor( $tableHeaderTopProductTextColour[0], $tableHeaderTopProductTextColour[1], $tableHeaderTopProductTextColour[2] );
+$pdf->SetFillColor( $tableHeaderTopProductFillColour[0], $tableHeaderTopProductFillColour[1], $tableHeaderTopProductFillColour[2] );
+$pdf->Cell( 46, 12, "Users", 1, 0, 'L', true );
+
+// Remaining header cells
+$pdf->SetTextColor( $tableHeaderTopTextColour[0], $tableHeaderTopTextColour[1], $tableHeaderTopTextColour[2] );
+$pdf->SetFillColor( $tableHeaderTopFillColour[0], $tableHeaderTopFillColour[1], $tableHeaderTopFillColour[2] );
+
+for ( $i=0; $i<count($columnLabels1); $i++ ) {
+  $pdf->Cell( 36, 12, $columnLabels1[$i], 1, 0, 'C', true );
+}
+
+$pdf->Ln( 12 );
+
+// Create the table data rows
+
+$fill1 = false;
+$row1= 0;
+
+foreach ( $data1 as $dataRow1 ) {
+
+  // Create the left header cell
+  $pdf->SetFont( 'Arial', 'B', 15 );
+  $pdf->SetTextColor( $tableHeaderLeftTextColour[0], $tableHeaderLeftTextColour[1], $tableHeaderLeftTextColour[2] );
+  $pdf->SetFillColor( $tableHeaderLeftFillColour[0], $tableHeaderLeftFillColour[1], $tableHeaderLeftFillColour[2] );
+  $pdf->Cell( 46, 12, " " . $rowLabels1[$row1], 1, 0, 'L', $fill );
+
+  // Create the data cells
+  $pdf->SetTextColor( $textColour[0], $textColour[1], $textColour[2] );
+  $pdf->SetFillColor( $tableRowFillColour[0], $tableRowFillColour[1], $tableRowFillColour[2] );
+  $pdf->SetFont( 'Arial', '', 15 );
+
+  for ( $i=0; $i<count($columnLabels1); $i++ ) {
+    $pdf->Cell( 36, 12, (number_format( $dataRow1[$i] ) ), 1, 0, 'C', $fill );
+  }
+
+  $row1++;
+  $fill1 = !$fill1;
+  $pdf->Ln( 12 );
+}
+
+
+/***
+  Create the chart
+***/
+
+// Compute the X scale
+$xScale1 = count($rowLabels1) / ( $chartWidth1 - 40 );
+
+// Compute the Y scale
+
+$maxTotal1 = 0;
+
+foreach ( $data1 as $dataRow1 ) {
+  $totalSales1 = 0;
+  foreach ( $dataRow1 as $dataCell1 ) $totalSales1 += $dataCell1;
+  $maxTotal1 = ( $totalSales1 > $maxTotal1 ) ? $totalSales1 : $maxTotal1;
+}
+
+$yScale1 = $maxTotal1 / $chartHeight1;
+
+// Compute the bar width
+$barWidth1 = ( 1 / $xScale1 ) / 1.5;
+
+// Add the axes:
+
+$pdf->SetFont( 'Arial', '', 10 );
+
+// X axis
+$pdf->Line( $chartXPos1 + 30, $chartYPos1, $chartXPos1 + $chartWidth1, $chartYPos1 );
+
+for ( $i=0; $i < count( $rowLabels1 ); $i++ ) {
+  $pdf->SetXY( $chartXPos1 + 40 +  $i / $xScale1, $chartYPos1 );
+  $pdf->Cell( $barWidth1, 10, $rowLabels1[$i], 0, 0, 'C' );
+}
+
+// Y axis
+$pdf->Line( $chartXPos1 + 30, $chartYPos1, $chartXPos1 + 30, $chartYPos1 - $chartHeight1 - 8 );
+
+for ( $i=0; $i <= $maxTotal1; $i += $chartYStep1 ) {
+  $pdf->SetXY( $chartXPos1 + 7, $chartYPos1 - 5 - $i / $yScale1 );
+  $pdf->Cell( 20, 10, number_format( $i ), 0, 0, 'R' );
+  $pdf->Line( $chartXPos1 + 28, $chartYPos1 - $i / $yScale1, $chartXPos1 + 30, $chartYPos1 - $i / $yScale1 );
+}
+
+// Add the axis labels
+$pdf->SetFont( 'Arial', 'B', 12 );
+$pdf->SetXY( $chartWidth1 / 2 + 20, $chartYPos1 + 8 );
+$pdf->Cell( 30, 10, $chartXLabel1, 0, 0, 'C' );
+$pdf->SetXY( $chartXPos1 + 7, $chartYPos1 - $chartHeight1 - 12 );
+$pdf->Cell( 20, 10, $chartYLabel1, 0, 0, 'R' );
+
+// Create the bars
+$xPos1 = $chartXPos1 + 40;
+$bar1 = 0;
+
+foreach ( $data1 as $dataRow1 ) {
+
+  // Total up the sales figures for this product
+  $totalSales1 = 0;
+  foreach ( $dataRow1 as $dataCell1 ) $totalSales1 += $dataCell1;
+
+  // Create the bar
+  $colourIndex1 = $bar1 % count( $chartColours1 );
+  $pdf->SetFillColor( $chartColours1[$colourIndex1][0], $chartColours1[$colourIndex1][1], $chartColours1[$colourIndex1][2] );
+  $pdf->Rect( $xPos1, $chartYPos1 - ( $totalSales1 / $yScale1 ), $barWidth1, $totalSales1 / $yScale1, 'DF' );
+  $xPos1 += ( 1 / $xScale1 );
+  $bar1++;
+}
+
 /***
   Serve the PDF
 ***/
