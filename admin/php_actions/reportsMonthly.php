@@ -48,7 +48,7 @@ $logoFile = "../libraries/fpdf182/tutorial/logo.png";
 $logoXPos = 50;
 $logoYPos = 50;
 $logoWidth = 100;
-$columnLabels = array( "Q1", "Q2", "Q3", "Q4" );
+$columnLabels = array( "Week 1", "Week 2", "Week 3", "Week 4" );
 $rowLabels = array( "Promi", "Partial", "Full Paid");
 $chartXPos = 20;
 $chartYPos = 250;
@@ -66,51 +66,51 @@ $chartColours = array(
                 );
 
 //Query for quarterly data array
-  $promi_qrtr1 = $conn->query("SELECT COUNT(LRN) as Q1, payment_type FROM payment WHERE QUARTER(datepaid) = 1 AND payment_type='Promi'") or die($conn->error());
+  $promi_qrtr1 = $conn->query("SELECT COUNT(LRN) as Q1, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Promi'") or die($conn->error());
   $qrow_pq1 = $promi_qrtr1->fetch_assoc();
   $promi_data1 = $qrow_pq1['Q1'];
 
-  $promi_qrtr2 = $conn->query("SELECT COUNT(LRN) as Q2, payment_type FROM payment WHERE QUARTER(datepaid) = 2 AND payment_type='Promi'") or die($conn->error());
+  $promi_qrtr2 = $conn->query("SELECT COUNT(LRN) as Q2, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Promi'") or die($conn->error());
   $qrow_pq2 = $promi_qrtr2->fetch_assoc();
   $promi_data2 = $qrow_pq2['Q2'];
 
-  $promi_qrtr3 = $conn->query("SELECT COUNT(LRN) as Q3, payment_type FROM payment WHERE QUARTER(datepaid) = 3 AND payment_type='Promi'") or die($conn->error());
+  $promi_qrtr3 = $conn->query("SELECT COUNT(LRN) as Q3, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Promi'") or die($conn->error());
   $qrow_pq3 = $promi_qrtr3->fetch_assoc();
   $promi_data3 = $qrow_pq3['Q3'];
 
-  $promi_qrtr4 = $conn->query("SELECT COUNT(LRN) as Q4, payment_type FROM payment WHERE QUARTER(datepaid) = 4 AND payment_type='Promi'") or die($conn->error());
+  $promi_qrtr4 = $conn->query("SELECT COUNT(LRN) as Q4, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Promi'") or die($conn->error());
   $qrow_pq4 = $promi_qrtr4->fetch_assoc();
   $promi_data4 = $qrow_pq4['Q4'];
 
-  $partial_qrtr1 = $conn->query("SELECT COUNT(LRN) as Q1, payment_type FROM payment WHERE QUARTER(datepaid) = 1 AND payment_type='Partial Payment'") or die($conn->error());
+  $partial_qrtr1 = $conn->query("SELECT COUNT(LRN) as Q1, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Partial Payment'") or die($conn->error());
   $qrow_paq1 = $partial_qrtr1->fetch_assoc();
   $partial_data1 = $qrow_paq1['Q1'];
 
-  $partial_qrtr2 = $conn->query("SELECT COUNT(LRN) as Q2, payment_type FROM payment WHERE QUARTER(datepaid) = 2 AND payment_type='Partial Payment'") or die($conn->error());
+  $partial_qrtr2 = $conn->query("SELECT COUNT(LRN) as Q2, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Partial Payment'") or die($conn->error());
   $qrow_paq2 = $partial_qrtr2->fetch_assoc();
   $partial_data2 = $qrow_paq2['Q2'];
 
-  $partial_qrtr3 = $conn->query("SELECT COUNT(LRN) as Q3, payment_type FROM payment WHERE QUARTER(datepaid) = 3 AND payment_type='Partial Payment'") or die($conn->error());
+  $partial_qrtr3 = $conn->query("SELECT COUNT(LRN) as Q3, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Partial Payment'") or die($conn->error());
   $qrow_paq3 = $partial_qrtr3->fetch_assoc();
   $partial_data3 = $qrow_paq3['Q3'];
 
-  $partial_qrtr4 = $conn->query("SELECT COUNT(LRN) as Q4, payment_type FROM payment WHERE QUARTER(datepaid) = 4 AND payment_type='Partial Payment'") or die($conn->error());
+  $partial_qrtr4 = $conn->query("SELECT COUNT(LRN) as Q4, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Partial Payment'") or die($conn->error());
   $qrow_paq4 = $partial_qrtr4->fetch_assoc();
   $partial_data4 = $qrow_paq4['Q4'];
 
-  $f_qrtr1 = $conn->query("SELECT COUNT(LRN) as Q1, payment_type FROM payment WHERE QUARTER(datepaid) = 1 AND payment_type='Full Payment'") or die($conn->error());
+  $f_qrtr1 = $conn->query("SELECT COUNT(LRN) as Q1, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Full Payment'") or die($conn->error());
   $qrow_fq1 = $f_qrtr1->fetch_assoc();
   $f_data1 = $qrow_fq1['Q1'];
 
-  $f_qrtr2 = $conn->query("SELECT COUNT(LRN) as Q2, payment_type FROM payment WHERE QUARTER(datepaid) = 2 AND payment_type='Full Payment'") or die($conn->error());
+  $f_qrtr2 = $conn->query("SELECT COUNT(LRN) as Q2, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Full Payment'") or die($conn->error());
   $qrow_fq2 = $f_qrtr2->fetch_assoc();
   $f_data2 = $qrow_fq2['Q2'];
 
-  $f_qrtr3 = $conn->query("SELECT COUNT(LRN) as Q3, payment_type FROM payment WHERE QUARTER(datepaid) = 3 AND payment_type='Full Payment'") or die($conn->error());
+  $f_qrtr3 = $conn->query("SELECT COUNT(LRN) as Q3, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Full Payment'") or die($conn->error());
   $qrow_fq3 = $f_qrtr3->fetch_assoc();
   $f_data3 = $qrow_fq3['Q3'];
 
-  $f_qrtr4 = $conn->query("SELECT COUNT(LRN) as Q4, payment_type FROM payment WHERE QUARTER(datepaid) = 4 AND payment_type='Full Payment'") or die($conn->error());
+  $f_qrtr4 = $conn->query("SELECT COUNT(LRN) as Q4, payment_type FROM payment WHERE YEAR(datepaid) = YEAR(CURDATE()) AND MONTH(datepaid) = MONTH(CURDATE()) AND payment_type='Full Payment'") or die($conn->error());
   $qrow_fq4 = $f_qrtr4->fetch_assoc();
   $f_data4 = $qrow_fq4['Q4'];
 
@@ -152,7 +152,7 @@ $pdf->Cell( 0, 10, $reportName, 0, 1, 'C' );
 $pdf->Cell(0,10,'Student Miscellaneous Payment',0,1,'C');
 
 $pdf->SetFont( 'Arial', 'B', 50 );
-$pdf->Cell(0,55,'Annual Report',0,1,'C');
+$pdf->Cell(0,55,'Monthly Report',0,1,'C');
 
 
 /**
@@ -346,7 +346,7 @@ foreach ( $data as $dataRow ) {
 ///////////////////////////////////////////////
 /// Create new page for User activities
 
-$columnLabels1 = array( "Q1", "Q2", "Q3", "Q4" );
+$columnLabels1 = array( "Week 1", "Week 2", "Week 3", "Week 4" );
 $rowLabels1 = array( "System Admin", "Accountant", "Advisers", "Inquiries");
 $chartXPos1 = 20;
 $chartYPos1 = 250;
@@ -363,55 +363,55 @@ $chartColours1 = array(
                   array( 0, 0, 255 ),
                 );
 
-  $SA_q1 = $conn->query("SELECT COUNT(id) as SA1 FROM activities WHERE user_type='System Administrator' AND QUARTER(activity_date)=1") or die($conn->error());
+  $SA_q1 = $conn->query("SELECT COUNT(id) as SA1 FROM activities WHERE user_type='System Administrator' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $SArow_q1 = $SA_q1->fetch_assoc();
   $dataSA1 = $SArow_q1['SA1'];
 
-  $SA_q2 = $conn->query("SELECT COUNT(id) as SA2 FROM activities WHERE user_type='System Administrator' AND QUARTER(activity_date)=2") or die($conn->error());
+  $SA_q2 = $conn->query("SELECT COUNT(id) as SA2 FROM activities WHERE user_type='System Administrator' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $SArow_q2 = $SA_q2->fetch_assoc();
   $dataSA2 = $SArow_q2['SA2'];
 
-  $SA_q3 = $conn->query("SELECT COUNT(id) as SA3 FROM activities WHERE user_type='System Administrator' AND QUARTER(activity_date)=3") or die($conn->error());
+  $SA_q3 = $conn->query("SELECT COUNT(id) as SA3 FROM activities WHERE user_type='System Administrator' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $SArow_q3 = $SA_q3->fetch_assoc();
   $dataSA3 = $SArow_q3['SA3'];
 
-  $SA_q4 = $conn->query("SELECT COUNT(id) as SA4 FROM activities WHERE user_type='System Administrator' AND QUARTER(activity_date)=4") or die($conn->error());
+  $SA_q4 = $conn->query("SELECT COUNT(id) as SA4 FROM activities WHERE user_type='System Administrator' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $SArow_q4 = $SA_q4->fetch_assoc();
   $dataSA4 = $SArow_q4['SA4'];
 
-  $Acc_q1 = $conn->query("SELECT COUNT(id) as acc1 FROM activities WHERE user_type='Accountant' AND QUARTER(activity_date)=1") or die($conn->error());
+  $Acc_q1 = $conn->query("SELECT COUNT(id) as acc1 FROM activities WHERE user_type='Accountant' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $accRow_q1 = $Acc_q1->fetch_assoc();
   $dataAcc1 = $accRow_q1['acc1'];
 
-  $Acc_q2 = $conn->query("SELECT COUNT(id) as acc2 FROM activities WHERE user_type='Accountant' AND QUARTER(activity_date)=2") or die($conn->error());
+  $Acc_q2 = $conn->query("SELECT COUNT(id) as acc2 FROM activities WHERE user_type='Accountant' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $accRow_q2 = $Acc_q2->fetch_assoc();
   $dataAcc2 = $accRow_q2['acc2'];
 
-  $Acc_q3 = $conn->query("SELECT COUNT(id) as acc3 FROM activities WHERE user_type='Accountant' AND QUARTER(activity_date)=3") or die($conn->error());
+  $Acc_q3 = $conn->query("SELECT COUNT(id) as acc3 FROM activities WHERE user_type='Accountant' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $accRow_q3 = $Acc_q3->fetch_assoc();
   $dataAcc3 = $accRow_q3['acc3'];
 
-  $Acc_q4 = $conn->query("SELECT COUNT(id) as acc4 FROM activities WHERE user_type='Accountant' AND QUARTER(activity_date)=4") or die($conn->error());
+  $Acc_q4 = $conn->query("SELECT COUNT(id) as acc4 FROM activities WHERE user_type='Accountant' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $accRow_q4 = $Acc_q4->fetch_assoc();
   $dataAcc4 = $accRow_q4['acc4'];
 
-  $adv_q1 = $conn->query("SELECT COUNT(id) as adv1 FROM activities WHERE user_type='Adviser' AND QUARTER(activity_date)=1") or die($conn->error());
+  $adv_q1 = $conn->query("SELECT COUNT(id) as adv1 FROM activities WHERE user_type='Adviser' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $advRow_q1 = $adv_q1->fetch_assoc();
   $dataAdv1 = $advRow_q1['adv1'];
 
-  $adv_q2 = $conn->query("SELECT COUNT(id) as adv2 FROM activities WHERE user_type='Adviser' AND QUARTER(activity_date)=2") or die($conn->error());
+  $adv_q2 = $conn->query("SELECT COUNT(id) as adv2 FROM activities WHERE user_type='Adviser' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $advRow_q2 = $adv_q2->fetch_assoc();
   $dataAdv2 = $advRow_q2['adv2'];
 
-  $adv_q3 = $conn->query("SELECT COUNT(id) as adv3 FROM activities WHERE user_type='Adviser' AND QUARTER(activity_date)=3") or die($conn->error());
+  $adv_q3 = $conn->query("SELECT COUNT(id) as adv3 FROM activities WHERE user_type='Adviser' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $advRow_q3 = $adv_q3->fetch_assoc();
   $dataAdv3 = $advRow_q3['adv3'];
 
-  $adv_q4 = $conn->query("SELECT COUNT(id) as adv4 FROM activities WHERE user_type='Adviser' AND QUARTER(activity_date)=4") or die($conn->error());
+  $adv_q4 = $conn->query("SELECT COUNT(id) as adv4 FROM activities WHERE user_type='Adviser' AND YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE())") or die($conn->error());
   $advRow_q4 = $adv_q4->fetch_assoc();
   $dataAdv4 = $advRow_q4['adv4'];
 
-  $inq1 = $conn->query("SELECT COUNT(id) as inquire1 FROM messages WHERE QUARTER(dateRecieved)=1") or die($conn->error());
+  $inq1 = $conn->query("SELECT COUNT(id) as inquire1 FROM messages WHERE QUARTER(dateRecieved)=2") or die($conn->error());
   $inqRow_q1 = $inq1->fetch_assoc();
   $dataInq1 = $inqRow_q1['inquire1'];
 
@@ -419,11 +419,11 @@ $chartColours1 = array(
   $inqRow_q2 = $inq2->fetch_assoc();
   $dataInq2 = $inqRow_q2['inquire2'];
 
-  $inq3 = $conn->query("SELECT COUNT(id) as inquire3 FROM messages WHERE QUARTER(dateRecieved)=3") or die($conn->error());
+  $inq3 = $conn->query("SELECT COUNT(id) as inquire3 FROM messages WHERE QUARTER(dateRecieved)=2") or die($conn->error());
   $inqRow_q3 = $inq3->fetch_assoc();
   $dataInq3 = $inqRow_q3['inquire3'];
 
-  $inq4 = $conn->query("SELECT COUNT(id) as inquire4 FROM messages WHERE QUARTER(dateRecieved)=4") or die($conn->error());
+  $inq4 = $conn->query("SELECT COUNT(id) as inquire4 FROM messages WHERE QUARTER(dateRecieved)=2") or die($conn->error());
   $inqRow_q4 = $inq4->fetch_assoc();
   $dataInq4 = $inqRow_q4['inquire4'];
 
@@ -671,7 +671,7 @@ $pdf->SetFont('Times','',12);
     //////////////////////////USER LOGS////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////
-    $userLogs = $conn->query("SELECT * FROM activities WHERE YEAR(activity_date) = YEAR(CURDATE()) ORDER BY activity_date DESC") or die($conn->error);
+    $userLogs = $conn->query("SELECT * FROM activities WHERE YEAR(activity_date) = YEAR(CURDATE()) AND MONTH(activity_date) = MONTH(CURDATE()) ORDER BY activity_date DESC") or die($conn->error);
     $logCount = 1;
     
     $pdf->SetFont( 'Arial', '', 20 );

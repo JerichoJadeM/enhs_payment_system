@@ -1,8 +1,13 @@
 <?php
-    $db_server = "sql6.freemysqlhosting.net";
-    $db_user = "sql6398227";
-    $db_pass = "e68kqdz6FX";
-    $db_name = "sql6398227";
+    // $db_server = "sql6.freemysqlhosting.net";
+    // $db_user = "sql6398227";
+    // $db_pass = "e68kqdz6FX";
+    // $db_name = "sql6398227";
+
+    $db_server = "localhost";
+    $db_user = "root";
+    $db_pass = "";
+    $db_name = "thesis";
 
     $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
 
@@ -22,6 +27,11 @@
             $lname = $row['lname'];
             $usertype = $row['user_type'];
 
+    //Show current miscellaneous fee
+    $sqlMiscFee = $conn->query("SELECT fee FROM miscfee") or die($conn->error());
+    $miscResult = $sqlMiscFee->fetch_assoc();
+    $currentMiscFee = $miscResult['fee'];
+
    //payment process
    if(isset($_POST['submit'])){
     $LRN = $_POST['lrn'];
@@ -40,7 +50,7 @@
     $amountresult = $amountUpdate->fetch_assoc();
     $currentPaid = $amountresult['amount'];
 
-      if($currentPaid == 700){
+      if($currentPaid == $currentMiscFee){
         $_SESSION['message'] = "Student is already fully paid!";
         $_SESSION['msg_type'] = "info";
       
@@ -48,7 +58,7 @@
       }else{
 
         $amount = $amountToPay+$currentPaid;
-        $RemainingBal = 700 - $amount;
+        $RemainingBal = $currentMiscFee - $amount;
 
     $sql = $conn->query("UPDATE payment SET fullname='$fullname', gradesection='$gradesection', address='$address', phone='$phone', payment_type='$payment_type', amount='$amount', cashier='$user', datepaid=CURRENT_DATE() WHERE LRN = '$LRN'") or die($conn->error);
 
@@ -80,7 +90,7 @@
           //##########################################################################
             $textMsg = "Php " . $amount . ".00 total Misc fee paid by " . $fullname . ". Remaining Balance is Php " . $RemainingBal . ".00";
 
-            $msgResult = itexmo($phone,$textMsg,"TR-CHONA140935_CG9CS", "b)lq&%tyr]");
+            $msgResult = itexmo($phone,$textMsg,"TR-JANVI394312_SW89W", "5hb3jg}vj7");
             if ($msgResult == ""){
               echo "iTexMo: No response from server!!!
               Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.	
@@ -340,7 +350,7 @@
           //##########################################################################
             $textMsg = "Php " . $amount . ".00 total Misc fee paid by " . $fullname . ". Remaining Balance is Php " . $RemainingBal . ".00";
 
-            $msgResult = itexmo($phone,$textMsg,"TR-CHONA140935_CG9CS", "b)lq&%tyr]");
+            $msgResult = itexmo($phone,$textMsg,"TR-JANVI394312_SW89W", "5hb3jg}vj7");
             if ($msgResult == ""){
             echo "iTexMo: No response from server!!!
             Please check the METHOD used (CURL or CURL-LESS). If you are using CURL then try CURL-LESS and vice versa.	

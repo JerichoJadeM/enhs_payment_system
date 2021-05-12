@@ -188,6 +188,11 @@
                             <h6 class="card-title lead">Payment History</h6>
                           </div>
                             <?php
+                              // Display for the CURRENT Miscellaneous Value 
+                              $sqlMiscFee = $conn->query("SELECT fee FROM miscfee") or die($conn->error());
+                              $miscResult = $sqlMiscFee->fetch_assoc();
+                              $currentMiscFee = $miscResult['fee'];
+
                               $history = $conn->query("SELECT * FROM payment WHERE LRN = '$studentLRN' LIMIT 1") or die($conn->error());
                               $his = $history->fetch_assoc();
 
@@ -203,7 +208,7 @@
                                 $hisAmount = $his['amount'];
                                 $hisDate = $his['datepaid'];
 
-                                $remainingBal = 700 - $hisAmount;
+                                $remainingBal = $currentMiscFee - $hisAmount;
                             ?>
                             <div class="card-body shadow mb-0">
                                 <form action="../process/ADVprintR.php" method="POST">

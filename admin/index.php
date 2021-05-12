@@ -165,19 +165,46 @@
     <section id="main">
         <div class="container">
         <div class="row mb-3">
-          <div class="container">
-          <a href="php_actions/reports.php" target="_blank" type="button" class="btn btn-outline-dark text-primary"><strong>Generate Report</strong></a>
-            <!-- <div class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Generate Report
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#"><strong>Weekly</strong></a>
-                <a class="dropdown-item" href="#"><strong>Monthly</strong></a>
-                <a class="dropdown-item" href="#"><strong>Quarterly</strong></a>
-                <a class="dropdown-item" href="#"><strong>Annually</strong></a>
+          <div class="container"> <!--Setting new Add ons-->
+              <div class="card" style="width: 100%;">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <div class="dropdown">
+                        <button class="btn btn-outline-dark dropdown-toggle text-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <strong>Generate Report</strong>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="php_actions/reportsMonthly.php" target="_blank"><strong>Monthly</strong></a>
+                          <a class="dropdown-item" href="php_actions/reportsQuarterly.php" target="_blank"><strong>Quarterly</strong></a>
+                          <a class="dropdown-item" href="php_actions/reports.php" target="_blank"><strong>Annually</strong></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="float-right"><!--GO TO RIGHT-->
+                        <h5 class="card-subtitle mb-2 text-muted">Current Miscellaneous Fee: </h5>
+                        <?php
+                                // Display for the CURRENT Miscellaneous Value 
+                                $sqlMiscFee = $conn->query("SELECT fee FROM miscfee") or die($conn->error());
+                                $miscResult = $sqlMiscFee->fetch_assoc();
+                                $currentMiscFee = $miscResult['fee'];
+                              ?>
+                          <form action="php_actions/process.php" method="GET">
+                            <div class="row">
+                              <div class="col pr-1">
+                              <input type="text" class="form-control" name="changeFee" value="<?php echo number_format($currentMiscFee, 2);?>">
+                              </div>
+                              <div class="col pl-1">
+                                <button class="btn btn-primary" type="submit" name="change">Change</button>
+                              </div>
+                            </div>
+                          </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div> -->
           </div>
         </div>
           <div class="card-deck"><!--Card Decks-->

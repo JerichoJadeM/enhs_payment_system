@@ -178,4 +178,22 @@
 
         header("location: ../profile.php");
     }
+
+    //Saving the new Miscellaneous Fee
+    if(isset($_GET['change'])){
+        $ID = $_GET['feeID'];
+        $changeFee = $_GET['changeFee'];
+
+        $conn->query("UPDATE miscfee SET fee='$changeFee', dateChanged=CURRENT_DATE() WHERE feeID=1;") or die($conn->error);
+
+        $activity = "You changed the current amount of Miscellaneous Fee";
+        $act = $conn->query("INSERT INTO activities (user_type, name, activity, activity_date)
+        VALUES
+        ('$usertype', '$admin_name', '$activity', CURRENT_DATE())") or die($conn->error);
+
+        $_SESSION['message'] = "You successfully changed the amount of school's Miscellaneous Fee";
+        $_SESSION['msg_type'] = "success";
+
+        header("location:../index.php");
+    }
 ?>
