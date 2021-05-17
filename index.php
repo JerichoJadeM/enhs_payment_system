@@ -127,7 +127,7 @@
                         <p class="mb-0">Forgot password?</p>
                         <p class="mb-5">Don't you have an account? <a href="#" type="button" data-toggle="modal" data-target="#message">Contact Us.</a></p>
 
-                        <p class="mb-0"><a href="DevTeamProfile/index.html" target="_blank"><small>Powered by:</small> IICS Thesis Group VI</a></p>
+                        <p class="mb-0"><a href="#" target="_blank"><small>Powered by:</small> IICS Thesis Group VI</a></p>
                         <small>Copyright &copy; 2019 - <script>document.write(new Date().getFullYear());</script> All rights reserved.</small>
                       </div>
                     </div>
