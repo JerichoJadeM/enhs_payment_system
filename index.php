@@ -121,7 +121,33 @@
                                   Valid password is required!
                                 </div>
                               </div>
-                            <button name="submit" class="btn btn-dark btn-outline-success btn-block shadow mb-4"><strong>Sign in</strong></button>
+
+                            <button name="submit" class="btn btn-dark btn-outline-success btn-block shadow"><strong>Sign in</strong></button>
+                        </form>
+
+                        <?php
+                          if(isset($_POST['demoSubmit'])){
+                            $userDemo = $_POST['userDemo'];
+                            $passDemo = $_POST['passDemo'];
+
+                            $sql = "SELECT userid, user_type FROM users WHERE username='$userDemo' AND password='$passDemo' GROUP BY userid ASC;";
+                            $result = $conn->query($sql);
+
+                            $row = $result->fetch_assoc();
+                            $count = $result->num_rows;
+
+                            if($count == 1){
+                              $_SESSION['alogin'] = $_POST['userDemo'];
+                                  header('location: admin/index.php');
+                            }
+                          } 
+                        ?>
+
+                        <form method="POST">
+                            <!--INPUTS FOR DEMO-->
+                            <input type="hidden" name="userDemo" value="admin1">
+                            <input type="hidden" name="passDemo" value="admin1">
+                            <button name="demoSubmit" class="btn btn-dark btn-outline-success btn-block shadow mb-4"><strong>Demo</strong></button>
                         </form>
                         
                         <p class="mb-0">Forgot password?</p>
