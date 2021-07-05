@@ -15,6 +15,7 @@
             $usertype = $row['user_type'];
 
             $admin_name = $fname . " " . $mname . ". " . $lname;
+
     //students CRUD process
     If(isset($_POST['addstudent'])){
 
@@ -50,8 +51,8 @@
     if(isset($_POST['delete'])){
         $id=$_POST['LRN'];
 
-        $conn->query("DELETE FROM students WHERE LRN_number = '$id' ") or die($conn->error());
-        $conn->query("DELETE FROM payment WHERE LRN = '$id' ") or die($conn->error());
+        $conn->query("DELETE FROM students WHERE LRN_number = '$id' ") or die($conn->error);
+        $conn->query("DELETE FROM payment WHERE LRN = '$id' ") or die($conn->error);
 
         $activity = "Deleted student record with LRN number of: " . $id;
         $act = $conn->query("INSERT INTO activities (user_type, name, activity, activity_date)
@@ -67,7 +68,7 @@
     if(isset($_POST['deleteUser'])){
         $id=$_POST['userid'];
 
-        $conn->query("DELETE FROM users WHERE userid = '$id' ") or die($conn->error());
+        $conn->query("DELETE FROM users WHERE userid = '$id' ") or die($conn->error);
 
         $activity = "You have deleted User Record with an id of: " . $id;
         $act = $conn->query("INSERT INTO activities (user_type, name, activity, activity_date)
@@ -83,7 +84,7 @@
     if(isset($_POST['deleteMsg'])){
         $id=$_POST['id'];
 
-        $conn->query("DELETE FROM messages WHERE id = '$id' ") or die($conn->error());
+        $conn->query("DELETE FROM messages WHERE id = '$id' ") or die($conn->error);
 
         $activity = "You have deleted a message, message id: " . $id;
         $act = $conn->query("INSERT INTO activities (user_type, name, activity, activity_date)

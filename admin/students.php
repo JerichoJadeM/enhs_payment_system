@@ -173,7 +173,7 @@
                               <thead>
                                   <tr>
                                     <th scope="col" class="text-center">No.</th>
-                                    <th scope="col" class="text-center">LRN Number</th>
+                                    <th scope="col" class="text-center">LRN</th>
                                     <th scope="col" class="text-center">Student Name</th>
                                     <th scope="col" class="text-center">Grade & Section</th>
                                     <th scope="col" class="text-center">Guardian</th>
