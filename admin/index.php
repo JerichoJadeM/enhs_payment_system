@@ -149,6 +149,7 @@ if (strlen($_SESSION['alogin']) == 0) {
           </div>
         </header>
         <?php
+        //This is for action notifications
         if (isset($_SESSION['message'])) : ?>
           <section id="breadcrumb">
             <div class="container">
@@ -163,6 +164,58 @@ if (strlen($_SESSION['alogin']) == 0) {
               </div>
           </section>
         <?php endif ?>
+        <?php
+        //This is for pending faculty application
+        //if (isset($_SESSION['message'])) : 
+        ?>
+        <section id="breadcrumb">
+          <div class="container">
+            <div class="alert alert-dismissible fade show alert-warning" role="alert">
+              <?php
+
+              ?>
+              <h3>You have new users waiting for approval</h3>
+              <div class="table-responsive">
+                <table id="pendingUsers" class="table table-hover nowrap table-sm" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">No.</th>
+                      <th scope="col" class="text-center">Full Name</th>
+                      <th scope="col" class="text-center">Position</th>
+                      <th scope="col" class="text-center">Phone Number</th>
+                      <th scope="col" class="text-center">Email Address</th>
+                      <th scope="col" class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $result = $conn->query("SELECT * FROM users WHERE status = 'PENDING' GROUP BY lname ASC") or die($conn->error);
+                    $count = 1;
+                    ?>
+                    <?php while ($row = $result->fetch_assoc()) : ?>
+                      <tr>
+                        <td><?php echo $count; ?></td>
+                        <td class="text-left"><?php echo $row['lname'] . ", " . $row['fname'] . " " . $row['mname'] . "." ?></td>
+                        <td class="text-center"><?php echo $row['user_type'] ?></td>
+                        <td class="text-center"><?php echo $row['phone'] ?></td>
+                        <td class="text-left"><?php echo $row['email'] ?></td>
+                        <td class="text-center">
+                          <a class="btn btn-info btn-sm" type="submit" name="confirm" href="php_actions/confirm.php?confirm=<?php echo $row['userid']; ?>">Confirm</a>
+                          <a class="btn btn-danger btn-sm" type="submit" name="confirm" href="php_actions/deny.php?deny=<?php echo $row['userid']; ?>">Deny</a>
+                        </td>
+                      </tr>
+                    <?php $count++;
+                    endwhile; ?>
+                  </tbody>
+                </table>
+              </div>
+              <button type="button" class="close" data-dismiss="alert" arial-label="close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        </section>
+        <?php //endif 
+        ?>
         <section id="main">
           <div class="container">
             <div class="row mb-3">
@@ -289,10 +342,6 @@ if (strlen($_SESSION['alogin']) == 0) {
             </div>
             <div class="row mt-3">
               <div class="col-md-12 mb-3">
-                <!--Overview-->
-                <!--Overview-->
-                <!--Overview-->
-                <!--Overview-->
                 <!--Overview-->
                 <div class="card">
                   <div class="card-body">
@@ -826,6 +875,30 @@ if (strlen($_SESSION['alogin']) == 0) {
       </div>
     </div>
     </div>
+    <!-- Deny faculty application -->
+    <div class="modal fade" id="delete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header main-color-bg">
+            <h5 class="modal-title" id="delete">Confirm Delete</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="php_actions/process.php" method="POST">
+            <div class="modal-body">
+              <input type="hidden" name="userid" id="userid">
+              Are you sure you want to delete this user?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
+              <button type="submit" name="deleteUser" class="btn btn-outline-danger">Confirm</a>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!--End of modal--->
     <!-- Logout -->
     <div class="modal fade" id="logout" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -848,7 +921,6 @@ if (strlen($_SESSION['alogin']) == 0) {
         </div>
       </div>
     </div>
-
     <script src="assets/js/validation.js"></script>
     <script src="libraries/jquery/jquery-3.5.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.js"></script>

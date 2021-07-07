@@ -158,11 +158,11 @@
     
     if(isset($_GET['edituser'])){
         $id = $_GET['userid'];
-        //$username = $_GET['username'];
+        $username = $_GET['username'];
         $fname = $_GET['fname'];
         $mname = $_GET['mname'];
         $lname = $_GET['lname'];
-        //$type = $_POST['usertype'];
+        $type = $_POST['usertype'];
         $phone = $_GET['phone'];
         $email = $_GET['email'];
         $address = $_GET['address'];
@@ -170,7 +170,7 @@
         $country = $_GET['country'];
         $postal = $_GET['postal'];
         $about = $_GET['about'];
-        //$file = $_GET['file'];
+        $file = $_GET['file'];
 
         $conn->query("UPDATE users SET fname='$fname', mname='$mname', lname='$lname', phone='$phone', email='$email', address='$address', city='$city', country='$country', postal_code='$postal', about='$about' WHERE userid='$id' ") or die($conn->error);
 

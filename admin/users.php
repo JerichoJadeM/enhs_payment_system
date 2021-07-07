@@ -184,7 +184,7 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                  $result = $conn->query("SELECT * FROM users WHERE user_type = 'Accountant' OR user_type = 'Adviser' GROUP BY lname ASC") or die($conn->error);
+                                  $result = $conn->query("SELECT * FROM users WHERE status='APPROVED' GROUP BY lname ASC") or die($conn->error);
                                   $count = 1;
                                 ?>
                                 <?php while($row = $result->fetch_assoc()): ?>
