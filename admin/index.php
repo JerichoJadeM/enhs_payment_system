@@ -179,10 +179,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 <h3>You have new users waiting for approval</h3>
               <?php endif ?>
               <?php if (!$rowCount) : ?>
-                    <h4>No users requests waiting for your approval</h4>
-                    <!-- <tr>
-                        <td colspan="6" class="text-center text-danger pt-3 pb-0"><strong>No New User waiting for confirmation</strong></td>
-                      </tr> -->
+                <h4>No users requests waiting for your approval</h4>
               <?php endif ?>
                 <div class="table-responsive">
                   <table id="pendingUsers" class="table table-hover nowrap table-sm" style="width:100%">
