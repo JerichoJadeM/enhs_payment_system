@@ -172,46 +172,54 @@ if (strlen($_SESSION['alogin']) == 0) {
           <div class="container">
             <div class="alert alert-dismissible fade show alert-warning" role="alert">
               <?php
-
+              $resultCount = $conn->query("SELECT count(userid) as total FROM users WHERE status = 'PENDING' GROUP BY lname ASC") or die($conn->error);
+              $rowCount = $resultCount->fetch_assoc();
               ?>
-              <h3>You have new users waiting for approval</h3>
-              <div class="table-responsive">
-                <table id="pendingUsers" class="table table-hover nowrap table-sm" style="width:100%">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="text-center">No.</th>
-                      <th scope="col" class="text-center">Full Name</th>
-                      <th scope="col" class="text-center">Position</th>
-                      <th scope="col" class="text-center">Phone Number</th>
-                      <th scope="col" class="text-center">Email Address</th>
-                      <th scope="col" class="text-center">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    $result = $conn->query("SELECT * FROM users WHERE status = 'PENDING' GROUP BY lname ASC") or die($conn->error);
-                    $count = 1;
-                    ?>
-                    <?php while ($row = $result->fetch_assoc()) : ?>
+              <?php if ($rowCount) : ?>
+                <h3>You have new users waiting for approval</h3>
+              <?php endif ?>
+              <?php if (!$rowCount) : ?>
+                    <h4>No users requests waiting for your approval</h4>
+                    <!-- <tr>
+                        <td colspan="6" class="text-center text-danger pt-3 pb-0"><strong>No New User waiting for confirmation</strong></td>
+                      </tr> -->
+              <?php endif ?>
+                <div class="table-responsive">
+                  <table id="pendingUsers" class="table table-hover nowrap table-sm" style="width:100%">
+                    <thead>
                       <tr>
-                        <td><?php echo $count; ?></td>
-                        <td class="text-left"><?php echo $row['lname'] . ", " . $row['fname'] . " " . $row['mname'] . "." ?></td>
-                        <td class="text-center"><?php echo $row['user_type'] ?></td>
-                        <td class="text-center"><?php echo $row['phone'] ?></td>
-                        <td class="text-left"><?php echo $row['email'] ?></td>
-                        <td class="text-center">
-                          <a class="btn btn-info btn-sm" type="submit" name="confirm" href="php_actions/confirm.php?confirm=<?php echo $row['userid']; ?>">Confirm</a>
-                          <a class="btn btn-danger btn-sm" type="submit" name="confirm" href="php_actions/deny.php?deny=<?php echo $row['userid']; ?>">Deny</a>
-                        </td>
+                        <th scope="col" class="text-center">No.</th>
+                        <th scope="col" class="text-center">Full Name</th>
+                        <th scope="col" class="text-center">Position</th>
+                        <th scope="col" class="text-center">Phone Number</th>
+                        <th scope="col" class="text-center">Email Address</th>
+                        <th scope="col" class="text-center">Action</th>
                       </tr>
-                    <?php $count++;
-                    endwhile; ?>
-                  </tbody>
-                </table>
-              </div>
-              <button type="button" class="close" data-dismiss="alert" arial-label="close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $result = $conn->query("SELECT * FROM users WHERE status = 'PENDING' GROUP BY lname ASC") or die($conn->error);
+                      $count = 1;
+                      ?>
+                      <?php while ($row = $result->fetch_assoc()) : ?>
+                        <tr>
+                          <td><?php echo $count; ?></td>
+                          <td class="text-left"><?php echo $row['lname'] . ", " . $row['fname'] . " " . $row['mname'] . "." ?></td>
+                          <td class="text-center"><?php echo $row['user_type'] ?></td>
+                          <td class="text-center"><?php echo $row['phone'] ?></td>
+                          <td class="text-left"><?php echo $row['email'] ?></td>
+                          <td class="text-center">
+                            <a class="btn btn-info btn-sm" type="submit" name="confirm" href="php_actions/confirm.php?confirm=<?php echo $row['userid']; ?>">Confirm</a>
+                            <a class="btn btn-danger btn-sm" type="submit" name="confirm" href="php_actions/deny.php?deny=<?php echo $row['userid']; ?>">Deny</a>
+                          </td>
+                        </tr>
+                      <?php $count++; endwhile; ?>
+                    </tbody>
+                  </table>
+                </div>
+                <button type="button" class="close" data-dismiss="alert" arial-label="close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         </section>
         <?php //endif 

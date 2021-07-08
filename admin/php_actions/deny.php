@@ -76,8 +76,8 @@ if(isset($_GET['deny'])){
         echo $e->getMessage();
     }
 
-    $_SESSION['message'] = "Confirmation completed, account credential emailed to the new user";
-    $_SESSION['msg_type'] = "success";
+    $_SESSION['message'] = "You denied " . $full_name . " from accessing the system.";
+    $_SESSION['msg_type'] = "danger";
 
     header("location: ../index.php");
 }
