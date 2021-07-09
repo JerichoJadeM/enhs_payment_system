@@ -1,13 +1,13 @@
 <?php
-    $db_server = "sql6.freemysqlhosting.net";
-    $db_user = "sql6413038";
-    $db_pass = "XSfWgaEnYH";
-    $db_name = "sql6413038";
+    // $db_server = "sql6.freemysqlhosting.net";
+    // $db_user = "sql6413038";
+    // $db_pass = "XSfWgaEnYH";
+    // $db_name = "sql6413038";
 
-    // $db_server = "localhost";
-    // $db_user = "root";
-    // $db_pass = "";
-    // $db_name = "thesis";
+    $db_server = "localhost";
+    $db_user = "root";
+    $db_pass = "";
+    $db_name = "thesis";
 
     $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
 
@@ -28,7 +28,7 @@
             $usertype = $row['user_type'];
 
     //Show current miscellaneous fee
-    $sqlMiscFee = $conn->query("SELECT fee FROM miscfee") or die($conn->error());
+    $sqlMiscFee = $conn->query("SELECT fee FROM miscfee") or die($conn->error);
     $miscResult = $sqlMiscFee->fetch_assoc();
     $currentMiscFee = $miscResult['fee'];
 
@@ -323,7 +323,12 @@
           $pdf->Output();
               }
               else{	
-              echo "Error Num ". $msgResult . " was encountered!";
+                $_SESSION['message'] = "Payment has been successfully save! \n
+                 Warning: Payment API Subscription is expired! Please contact the API provider \n
+                  SMS Notification is temporarily disabled.";
+                $_SESSION['msg_type'] = "danger";
+
+                header("location: payment.php");
               }
               
         }
@@ -360,7 +365,12 @@
               $_SESSION['msg_type'] = "success";
             }
             else{	
-            echo "Error Num ". $msgResult . " was encountered!";
+              $_SESSION['message'] = "Payment has been successfully save! \n
+                 Warning: Payment API Subscription is expired! Please contact the API provider \n
+                  SMS Notification and is temporarily disabled.";
+              $_SESSION['msg_type'] = "danger";
+
+              header("location: payment.php");
             }
    
             header("location: payment.php");
@@ -379,4 +389,3 @@
         }
       }   
 }
-?>

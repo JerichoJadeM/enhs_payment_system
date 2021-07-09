@@ -413,7 +413,7 @@ include("includes/config.php");
               <div class="row float-right">
                 <div class="col-md-12">
                   <button class="btn btn-warning mt-3 mb-2" data-dismiss="modal">Cancel</button>
-                  <button class="btn btn-info mt-3 mb-2" type="submit" name="addUser">Add New User</button>
+                  <button class="btn btn-info mt-3 mb-2" type="submit" name="addUser">Register</button>
                 </div>
               </div>
             </form>

@@ -13,7 +13,8 @@
     $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
 
     if($conn->connect_error){
-        die("Error Connection" . $conn->connect_error);
+        //die("Error Connection" . $conn->connect_error);
+        header ('location: error.php');
     }
 
     echo "<script>console.log('Connection Successful!')</script>"; 
