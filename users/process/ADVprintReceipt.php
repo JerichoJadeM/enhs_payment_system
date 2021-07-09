@@ -351,7 +351,10 @@
               $_SESSION['msg_type'] = "success";
             }
             else{	
-            echo "Error Num ". $msgResult . " was encountered!";
+              $_SESSION['message'] = "Payment has been successfully save! \n
+                 Warning: Payment API Subscription is expired! Please contact the API provider \n
+                  SMS Notification and is temporarily disabled.";
+              $_SESSION['msg_type'] = "danger";
             }
    
             header("location: ../adv/index.php");
