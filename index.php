@@ -182,7 +182,7 @@ include("includes/config.php");
                   <input type="hidden" name="passDemo" value="admin1">
                   <button name="demoSubmit" class="btn btn-dark btn-outline-success btn-block shadow mb-4"><strong>Demo</strong></button>
                 </form>
-                <p class="mb-0">Don't you have an account? <a href="#" type="button" data-toggle="modal" data-target="#register">Register here.</a></p>
+                <p class="mb-0"><a href="reset_password.php">Forgot Password</a> | <a href="#" type="button" data-toggle="modal" data-target="#register">Register</a></p>
                 <p class="mb-5">For inquiries <a href="#" type="button" data-toggle="modal" data-target="#message">Contact Us.</a></p>
 
                 <p class="mb-0"><a href="#" target="_blank"><small>Powered by:</small> IICS Thesis Group VI</a></p>
