@@ -158,7 +158,7 @@ include("includes/config.php");
                   <button name="submit" class="btn btn-dark btn-outline-success btn-block shadow"><strong>Sign in</strong></button>
                 </form>
 
-                <?php
+                <!-- <?php
                 if (isset($_POST['demoSubmit'])) {
                   $userDemo = $_POST['userDemo'];
                   $passDemo = $_POST['passDemo'];
@@ -177,16 +177,16 @@ include("includes/config.php");
                 ?>
 
                 <form method="POST">
-                  <!--INPUTS FOR DEMO-->
+                  INPUTS FOR DEMO
                   <input type="hidden" name="userDemo" value="admin1">
                   <input type="hidden" name="passDemo" value="admin1">
                   <button name="demoSubmit" class="btn btn-dark btn-outline-success btn-block shadow mb-4"><strong>Demo</strong></button>
-                </form>
-                <p class="mb-0"><a href="reset_password.php">Forgot Password</a> | <a href="#" type="button" data-toggle="modal" data-target="#register">Register</a></p>
+                </form>  -->
+                <p class="mb-1"><a href="reset_password.php">Forgot Password</a> | <a href="#" type="button" data-toggle="modal" data-target="#register">Register</a></p>
                 <p class="mb-5">For inquiries <a href="#" type="button" data-toggle="modal" data-target="#message">Contact Us.</a></p>
 
-                <!-- <p class="mb-0"><a href="#" target="_blank"><small>Powered by:</small> IICS Thesis Group VI</a></p> -->
-                <small>Copyright &copy; 2019 - <script>
+                <p class="mb-0"><a href="#" target="_blank">Powered by: IICS Thesis Group VI</a></p>
+                Copyright &copy; 2019 - <script>
                     document.write(new Date().getFullYear());
                   </script> All rights reserved.</small>
               </div>
