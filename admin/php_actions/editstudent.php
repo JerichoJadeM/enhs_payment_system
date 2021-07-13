@@ -186,7 +186,7 @@
                             <h6 class="card-title lead">Payment History</h6>
                           </div>
                           <?php
-                              $history = $conn->query("SELECT * FROM payment WHERE LRN = '$studentLRN' LIMIT 1") or die($conn->error());
+                              $history = $conn->query("SELECT * FROM payment WHERE LRN = '$studentLRN' LIMIT 1") or die($conn->error);
                               $his = $history->fetch_assoc();
 
                               if($his==null){
@@ -202,7 +202,7 @@
                                 $hisDate = $his['datepaid'];
                             ?>
                             <div class="card-body shadow mb-0">
-                                    <p class="lead text-center"><strong>LRN#: </strong><?php echo $hisLRN;?></p>
+                                    <p class="lead text-center"><strong>LRN: </strong><?php echo $hisLRN;?></p>
                                     <p>Amount Paid <span class="badge badge-success float-right"><?php echo $hisAmount . ".00";?></span> </p>
                                     
                                     <p>Status <span class="badge badge-info float-right"><?php echo $hisPtype;?></span> </p>
@@ -269,7 +269,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-5 form-group">
-                                                <label class="lead"><strong>LRN Number</strong></label>
+                                                <label class="lead"><strong>LRN</strong></label>
                                                 <input type="text" class="form-control" maxlength="13" name="LRN" value="<?php echo $Redit['LRN_number'];?>" placeholder="Student LRN number" readonly>
                                                 <div class="invalid-feedback">
                                                     Please fill up this field.

@@ -236,7 +236,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                   ?>
                     <div class="card-body shadow mb-0">
                       <form action="printR.php" method="POST">
-                        <p class="lead text-center"><strong>LRN#: </strong><?php echo $hisLRN; ?></p>
+                        <p class="lead text-center"><strong>LRN: </strong><?php echo $hisLRN; ?></p>
                         <input type="hidden" name="LRN" value="<?php echo $hisLRN; ?>">
                         <p>Amount Paid <span class="badge badge-success float-right"><?php echo "₱" . $hisAmount . ".00"; ?></span> </p>
 
@@ -352,7 +352,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <div class="card mt-2">
                           <img src="<?php echo "../../" . $student_pic; ?>" height="180px" width="180px" class="card-img-top img-fluid mt-2 px-3" alt="Student Photo">
                           <div class="card-body">
-                            <h5 class="text-center text-info"><strong>Student LRN</strong></h5>
+                            <h5 class="text-center text-info"><strong>LRN:</strong></h5>
                             <p class="lead text-center mb-0"><strong><?php echo $studentLRN; ?></strong></p>
                           </div>
                         </div><br>
@@ -387,7 +387,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                       <form method="POST" class="needs-validation" novalidate>
                         <input class="form-control mr-sm-2" type="search" name="search" placeholder="Enter Student LRN" aria-label="Search" required>
                         <div class="invalid-feedback">
-                          Please enter student LRN
+                          Please enter student's LRN
                         </div>
                     </div>
                   </div>
