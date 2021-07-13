@@ -185,7 +185,7 @@ include("includes/config.php");
                 <p class="mb-1"><a href="reset_password.php">Forgot Password</a> | <a href="#" type="button" data-toggle="modal" data-target="#register">Register</a></p>
                 <p class="mb-5">For inquiries <a href="#" type="button" data-toggle="modal" data-target="#message">Contact Us.</a></p>
 
-                <p class="mb-0"><a href="#" target="_blank">Powered by: IICS Thesis Group VI</a></p>
+                <p class="mb-0"><a href="DevTeamProfile/index.html" target="_blank">Powered by: IICS Thesis Group VI</a></p>
                 Copyright &copy; 2019 - <script>
                     document.write(new Date().getFullYear());
                   </script> All rights reserved.</small>

@@ -385,7 +385,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                   <div class="col-md-12">
                     <div class="create">
                       <form method="POST" class="needs-validation" novalidate>
-                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Enter Student LRN" aria-label="Search" required>
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Enter Student's LRN" aria-label="Search" required>
                         <div class="invalid-feedback">
                           Please enter student's LRN
                         </div>

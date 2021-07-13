@@ -80,7 +80,7 @@ $pdf->Ln(2);
 
 $pdf->SetFont('Times','B',12);
 $pdf->cell(10,10, "No.", 1,0, 'C');
-$pdf->cell(40,10, "Student LRN", 1,0, 'C');
+$pdf->cell(40,10, "LRN", 1,0, 'C');
 $pdf->cell(55,10, "Student Name", 1,0, 'C');
 $pdf->cell(32,10, "Grade & Section", 1,0, 'C');
 $pdf->cell(30,10, "Status", 1,0, 'C');
